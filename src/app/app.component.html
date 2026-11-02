@@ -1,0 +1,87 @@
+<div class="layout">
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-icon"><mat-icon>widgets</mat-icon></span><span><strong>Material Lab</strong><small>ANGULAR COMPONENTS</small></span></div>
+    <p class="nav-caption">WORKSPACE</p>
+    <button class="nav-link active" (click)="scrollTo('overview','Overview')"><mat-icon>space_dashboard</mat-icon>Overview</button>
+    <button class="nav-link" (click)="scrollTo('inputs','Inputs')"><mat-icon>tune</mat-icon>Inputs</button>
+    <button class="nav-link" (click)="scrollTo('display','Display')"><mat-icon>dashboard_customize</mat-icon>Display</button>
+    <button class="nav-link" (click)="scrollTo('data','Data')"><mat-icon>table_chart</mat-icon>Data table</button>
+    <div class="sidebar-spacer"></div>
+    <mat-card appearance="outlined" class="side-note"><mat-icon>lightbulb</mat-icon><strong>Built with the real thing</strong><p>Every control comes from the official Angular Material package.</p><a href="https://material.angular.dev/" target="_blank" rel="noreferrer">Explore Material ↗</a></mat-card>
+    <div class="profile"><span class="avatar">AM</span><span><b>Alex Morgan</b><small>Design workspace</small></span></div>
+  </aside>
+  <main class="main">
+    <mat-toolbar class="topbar">
+      <span class="mobile-brand"><mat-icon>widgets</mat-icon> Material Lab</span>
+      <div class="breadcrumb">Workspace <mat-icon>chevron_right</mat-icon> <b>{{activeNav}}</b></div>
+      <span class="spacer"></span>
+      <mat-form-field appearance="outline" class="search" subscriptSizing="dynamic">
+        <mat-icon matPrefix>search</mat-icon><input matInput placeholder="Search components" aria-label="Search components" [(ngModel)]="searchText">
+      </mat-form-field>
+      <button mat-icon-button matTooltip="Toggle dark mode" (click)="toggleTheme()"><mat-icon>{{darkMode ? 'light_mode' : 'dark_mode'}}</mat-icon></button>
+      <button mat-icon-button matTooltip="Notifications" [matBadge]="3" matBadgeSize="small" matBadgeColor="warn" (click)="toast('You are all caught up!')"><mat-icon>notifications_none</mat-icon></button>
+      <span class="avatar top-avatar">AM</span>
+    </mat-toolbar>
+    <div class="content" id="overview">
+      <section class="welcome">
+        <div><div class="eyebrow"><i></i> COMPONENT PLAYGROUND / ANGULAR MATERIAL</div><h1>Build with <em>Material.</em></h1><p>Explore real Angular Material components, controls, and patterns in one place.</p></div>
+        <div class="welcome-actions"><button mat-stroked-button (click)="openDialog()"><mat-icon>open_in_new</mat-icon> Preview dialog</button><button mat-flat-button color="primary" (click)="addComponent()"><mat-icon>add</mat-icon> Add component</button></div>
+      </section>
+      <section class="stats">
+        <mat-card appearance="outlined" class="stat"><mat-icon>widgets</mat-icon><strong>30+</strong><span>Components available</span></mat-card>
+        <mat-card appearance="outlined" class="stat"><mat-icon>tune</mat-icon><strong>08</strong><span>Controls to try</span></mat-card>
+        <mat-card appearance="outlined" class="stat"><mat-icon>check_circle</mat-icon><strong>100%</strong><span>Demo components ready</span></mat-card>
+        <mat-card appearance="outlined" class="stat"><mat-icon>auto_awesome</mat-icon><strong>21.2</strong><span>Angular Material release</span></mat-card>
+      </section>
+      <section class="section-head" id="display"><div><small>THE BUILDING BLOCKS</small><h2>Component showcase</h2><p>Common interface elements, straight from Angular Material.</p></div></section>
+      <div class="two-col">
+        <mat-card appearance="outlined" class="demo-card">
+          <mat-card-header><div mat-card-avatar class="card-icon"><mat-icon>smart_button</mat-icon></div><mat-card-title>Buttons</mat-card-title><mat-card-subtitle>Actions & emphasis</mat-card-subtitle></mat-card-header>
+          <mat-card-content><div class="button-row"><button mat-flat-button color="primary" (click)="toast('Filled button clicked.')">Filled</button><button mat-stroked-button (click)="toast('Outlined button clicked.')">Outlined</button><button mat-button (click)="toast('Text button clicked.')">Text</button></div><mat-divider></mat-divider><div class="button-row"><button mat-icon-button matTooltip="Favorite" (click)="toast('Added to favorites.')"><mat-icon>favorite_border</mat-icon></button><button mat-icon-button matTooltip="Share" (click)="toast('Share selected.')"><mat-icon>share</mat-icon></button><button mat-mini-fab color="primary" (click)="addComponent()"><mat-icon>add</mat-icon></button></div></mat-card-content>
+        </mat-card>
+        <mat-card appearance="outlined" class="demo-card">
+          <mat-card-header><div mat-card-avatar class="card-icon purple"><mat-icon>sell</mat-icon></div><mat-card-title>Chips & badges</mat-card-title><mat-card-subtitle>Compact information</mat-card-subtitle></mat-card-header>
+          <mat-card-content><mat-chip-set aria-label="Example categories"><mat-chip>Design</mat-chip><mat-chip>Development</mat-chip><mat-chip>Research</mat-chip></mat-chip-set><mat-divider></mat-divider><div class="badge-row"><span matBadge="4" matBadgeOverlap="false">Messages</span><span matBadge="NEW" matBadgeColor="accent" matBadgeOverlap="false">Updates</span><span matBadge="!" matBadgeColor="warn" matBadgeOverlap="false">Alerts</span></div></mat-card-content>
+        </mat-card>
+      </div>
+      <section class="section-head" id="inputs"><div><small>MAKE IT INTERACTIVE</small><h2>Inputs & controls</h2><p>Change values and see Material controls in action.</p></div></section>
+      <div class="two-col">
+        <mat-card appearance="outlined" class="demo-card">
+          <mat-card-header><div mat-card-avatar class="card-icon green"><mat-icon>edit_note</mat-icon></div><mat-card-title>Form controls</mat-card-title><mat-card-subtitle>Text fields, select, and date picker</mat-card-subtitle></mat-card-header>
+          <mat-card-content>
+            <div class="form-row"><mat-form-field appearance="outline"><mat-label>Display name</mat-label><input matInput [(ngModel)]="displayName"><mat-icon matSuffix>person</mat-icon></mat-form-field><mat-form-field appearance="outline"><mat-label>Role</mat-label><mat-select [(ngModel)]="selectedRole"><mat-option value="Designer">Designer</mat-option><mat-option value="Developer">Developer</mat-option><mat-option value="Product manager">Product manager</mat-option><mat-option value="Researcher">Researcher</mat-option></mat-select></mat-form-field></div>
+            <mat-form-field appearance="outline" class="full"><mat-label>Project date</mat-label><input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate"><mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle><mat-datepicker #picker></mat-datepicker></mat-form-field>
+            <div class="summary"><mat-icon>info</mat-icon><span><b>{{displayName || 'Your name'}}</b> · {{selectedRole}}<small>{{selectedDate ? (selectedDate | date:'mediumDate') : 'No date selected'}}</small></span></div>
+          </mat-card-content>
+          <mat-card-actions align="end"><button mat-button (click)="displayName=''; selectedRole='Designer'; selectedDate=null">Reset</button><button mat-flat-button color="primary" (click)="toast('Form preferences saved.')">Save changes</button></mat-card-actions>
+        </mat-card>
+        <mat-card appearance="outlined" class="demo-card">
+          <mat-card-header><div mat-card-avatar class="card-icon amber"><mat-icon>settings</mat-icon></div><mat-card-title>Preferences</mat-card-title><mat-card-subtitle>Checkboxes & slide toggles</mat-card-subtitle></mat-card-header>
+          <mat-card-content>
+            <div class="pref-row"><span><b>Email notifications</b><small>Receive workspace updates</small></span><mat-slide-toggle [(ngModel)]="notificationsEnabled" aria-label="Email notifications"></mat-slide-toggle></div><mat-divider></mat-divider>
+            <div class="pref-row"><span><b>Weekly summary</b><small>A short digest every Monday</small></span><mat-checkbox [(ngModel)]="weeklySummaryEnabled" aria-label="Weekly summary"></mat-checkbox></div><mat-divider></mat-divider>
+            <div class="pref-row"><span><b>Auto-save</b><small>Keep your work saved as you go</small></span><mat-slide-toggle [(ngModel)]="autoSaveEnabled" aria-label="Auto-save"></mat-slide-toggle></div>
+            <div class="hint"><mat-icon>verified_user</mat-icon> Preferences are stored locally in this demo session.</div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <section class="section-head" id="data"><div><small>ORGANIZED INFORMATION</small><h2>Data table</h2><p>Material table with live search and status labels.</p></div></section>
+      <mat-card appearance="outlined" class="table-card">
+        <div class="table-toolbar"><b>Component inventory</b><span>{{filteredRows.length}} components shown</span></div>
+        <div class="table-wrap"><table mat-table [dataSource]="filteredRows">
+          <ng-container matColumnDef="name"><th mat-header-cell *matHeaderCellDef>COMPONENT</th><td mat-cell *matCellDef="let row"><b>{{row.name}}</b></td></ng-container>
+          <ng-container matColumnDef="category"><th mat-header-cell *matHeaderCellDef>CATEGORY</th><td mat-cell *matCellDef="let row">{{row.category}}</td></ng-container>
+          <ng-container matColumnDef="status"><th mat-header-cell *matHeaderCellDef>STATUS</th><td mat-cell *matCellDef="let row"><span class="status">{{row.status}}</span></td></ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr><tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table><div class="empty" *ngIf="filteredRows.length===0">No matching components. Try another search.</div></div>
+      </mat-card>
+      <section class="section-head"><div><small>MORE TO EXPLORE</small><h2>Navigation & feedback</h2><p>Tabs, progress, expansion panels, dialogs, and snackbars.</p></div></section>
+      <div class="two-col">
+        <mat-card appearance="outlined" class="demo-card"><mat-card-header><div mat-card-avatar class="card-icon"><mat-icon>tab</mat-icon></div><mat-card-title>Tabs</mat-card-title><mat-card-subtitle>Switch between related views</mat-card-subtitle></mat-card-header><mat-card-content><mat-tab-group><mat-tab label="Overview"><div class="tab-panel"><mat-icon>space_dashboard</mat-icon><b>Overview tab</b><p>Keep related information together without leaving the current view.</p></div></mat-tab><mat-tab label="Details"><div class="tab-panel"><mat-icon>list_alt</mat-icon><b>Details tab</b><p>Organize secondary content into clear sections.</p></div></mat-tab><mat-tab label="Activity"><div class="tab-panel"><mat-icon>timeline</mat-icon><b>Activity tab</b><p>Show recent events and updates.</p></div></mat-tab></mat-tab-group></mat-card-content></mat-card>
+        <mat-card appearance="outlined" class="demo-card"><mat-card-header><div mat-card-avatar class="card-icon purple"><mat-icon>notifications_active</mat-icon></div><mat-card-title>Feedback & progress</mat-card-title><mat-card-subtitle>Keep users informed</mat-card-subtitle></mat-card-header><mat-card-content><div class="progress-title"><b>Project completion</b><strong>72%</strong></div><mat-progress-bar mode="determinate" [value]="72"></mat-progress-bar><p class="muted">You're making great progress. Keep it going.</p><mat-divider></mat-divider><div class="feedback-row"><span><b>Try a snackbar</b><small>Quick, non-blocking feedback</small></span><button mat-stroked-button (click)="toast('This is an Angular Material snackbar.')">Show snackbar</button></div><div class="feedback-row"><span><b>Open a dialog</b><small>Focused modal interaction</small></span><button mat-flat-button color="primary" (click)="openDialog()">Open dialog</button></div></mat-card-content></mat-card>
+      </div>
+      <mat-accordion class="faq"><mat-expansion-panel><mat-expansion-panel-header><mat-panel-title><mat-icon>code</mat-icon> Why use Angular Material?</mat-panel-title><mat-panel-description>Implementation notes</mat-panel-description></mat-expansion-panel-header>Angular Material provides Angular components designed to work with Angular forms, CDK behavior, accessibility patterns, and Material Design. This page imports real components from @angular/material.</mat-expansion-panel></mat-accordion>
+      <footer>Material Lab · Built with Angular Material <a href="https://material.angular.dev/" target="_blank" rel="noreferrer">Official documentation ↗</a></footer>
+    </div>
+  </main>
+</div>
