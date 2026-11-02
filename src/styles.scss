@@ -1,0 +1,49 @@
+:root {
+  color-scheme: light;
+  --page-bg: #f5f6fa;
+  --panel-bg: #fff;
+  --panel-border: #e6e8ef;
+  --text-main: #202434;
+  --text-muted: #737b8d;
+}
+* { box-sizing: border-box; }
+html, body { min-height: 100%; margin: 0; }
+body {
+  min-width: 320px;
+  background: var(--page-bg);
+  color: var(--text-main);
+  font-family: Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+mat-icon {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  display: inline-block;
+  white-space: nowrap;
+  direction: ltr;
+  font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+body.dark-theme {
+  color-scheme: dark;
+  --page-bg: #11141b;
+  --panel-bg: #1a1e28;
+  --panel-border: #303746;
+  --text-main: #edf0f8;
+  --text-muted: #a9b0c0;
+  background: var(--page-bg);
+  color: var(--text-main);
+  --mat-sys-surface: #1a1e28;
+  --mat-sys-surface-container: #222735;
+  --mat-sys-surface-container-low: #1d222e;
+  --mat-sys-surface-container-high: #2a3040;
+  --mat-sys-on-surface: #edf0f8;
+  --mat-sys-on-surface-variant: #b3bbcc;
+  --mat-sys-outline: #697386;
+  --mat-sys-outline-variant: #3a4354;
+  --mat-sys-primary: #afc1ff;
+}
+:focus-visible { outline: 2px solid #6385ef; outline-offset: 2px; }
