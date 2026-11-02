@@ -21,20 +21,15 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Unpack Angular project
-        run: unzip -q AngularMaterialDemo.zip
-
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22.16.0
 
       - name: Install dependencies
-        working-directory: AngularMaterialDemo
         run: npm install --no-audit --no-fund
 
       - name: Build Angular app for GitHub Pages
-        working-directory: AngularMaterialDemo
         run: npm run build -- --configuration production --base-href /angular-material/
 
       - name: Configure GitHub Pages
@@ -43,7 +38,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: AngularMaterialDemo/dist/angular-material-showcase/browser
+          path: dist/angular-material-lab/browser
 
   deploy:
     environment:
