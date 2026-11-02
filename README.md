@@ -4,33 +4,29 @@ A responsive component showcase built with the **official Angular Material** pac
 
 ## GitHub Pages
 
-This repository is configured to build and deploy to GitHub Pages automatically whenever changes are pushed to `main`.
+GitHub Actions builds and deploys this project whenever changes are pushed to `main`.
 
-After the first successful workflow run, the site is available at:
+Site: https://bradleysouciercomputer.github.io/angular-material/
 
-https://bradleysouciercomputer.github.io/angular-material/
-
-The workflow builds Angular with the `/angular-material/` base path and publishes the generated `dist/angular-material-showcase/browser/` folder.
+The workflow builds Angular with the `/angular-material/` base path and publishes the generated `dist/angular-material-lab/browser/` folder. No manual build or upload is needed after you push changes.
 
 ## Run locally
 
 Requirements: Node.js 22.12+ (or 20.19+ / 24.x).
 
-```bash
-npm install
-npm start
-```
+Install dependencies and start the development server:
+
+    npm install
+    npm start
 
 Open http://localhost:4200/.
 
-To create a production build:
+Create a production build:
 
-```bash
-npm run build
-```
+    npm run build
 
 ## Components demonstrated
 
-Buttons, icon buttons, FABs, chips, badges, form fields, selects, date picker, checkboxes, slide toggles, data table, tabs, progress bar, expansion panel, menus, dialog, snackbar, tooltips, sidenav, and toolbar.
+Buttons, icon buttons, floating action button, chips, badges, form fields, select, date picker, checkboxes, slide toggles, data table, tabs, progress bar, expansion panel, dialog, snackbar, tooltips, menus, and notifications.
 
 The visual theme uses Angular Material's official `azure-blue` prebuilt theme. Roboto and Material Symbols are loaded from Google Fonts.
